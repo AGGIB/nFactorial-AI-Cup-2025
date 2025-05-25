@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStart - IT Решения</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6b7280;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-outline:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #059669;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #111827;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 1rem 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: #1f2937;
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            background: #374151;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Auth Forms */
+        .auth-form {
+            max-width: 400px;
+            margin: 2rem auto;
+        }
+
+        .auth-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .auth-form input {
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            color: #374151;
+        }
+
+        .auth-toggle {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .auth-toggle a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        /* Success Messages */
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 2rem;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Hide elements initially */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">TechStart</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">Главная</a></li>
+                <li><a href="#" onclick="showSection('features')">Возможности</a></li>
+                <li><a href="#" onclick="showSection('pricing')">Цены</a></li>
+                <li><a href="#" onclick="showSection('contact')">Контакты</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-outline" onclick="showAuth('login')" id="loginBtn">Войти</button>
+                <button class="btn btn-primary" onclick="showAuth('register')" id="registerBtn">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Революционные IT решения</h1>
+                <p>Мы создаем инновационные продукты, которые меняют мир технологий</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-secondary btn-large" onclick="showAuth('register')">Начать работу</button>
+                    <button class="btn btn-outline btn-large" onclick="showPricing()">Попробовать бесплатно</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Наши возможности</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Быстрая разработка</h3>
+                        <p>Ускоряем процесс создания продуктов в 10 раз благодаря современным технологиям</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h3>Безопасность</h3>
+                        <p>Гарантируем максимальную защиту ваших данных с помощью передовых алгоритмов</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Аналитика</h3>
+                        <p>Предоставляем подробную аналитику для принятия обоснованных решений</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Тарифные планы</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Стартер</h3>
+                        <div class="price">0₽</div>
+                        <p>Для знакомства с платформой</p>
+                        <button class="btn btn-outline" onclick="selectPlan('starter')">Выбрать план</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Профессиональный</h3>
+                        <div class="price">9 990₽</div>
+                        <p>Для профессиональных проектов</p>
+                        <button class="btn btn-primary" onclick="selectPlan('pro')">Выбрать план</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Корпоративный</h3>
+                        <div class="price">29 990₽</div>
+                        <p>Для больших команд</p>
+                        <button class="btn btn-outline" onclick="selectPlan('enterprise')">Выбрать план</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Свяжитесь с нами</h2>
+                <form class="contact-form" onsubmit="submitContact(event)">
+                    <div class="form-group">
+                        <label for="contact-name">Имя</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Сообщение</label>
+                        <textarea id="contact-message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Отправить сообщение</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard (hidden by default) -->
+        <section id="dashboard" class="dashboard">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h2>Добро пожаловать в панель управления!</h2>
+                    <button class="btn btn-outline" onclick="logout()">Выйти</button>
+                </div>
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <h3>Мои проекты</h3>
+                        <p>У вас 3 активных проекта</p>
+                        <button class="btn btn-primary">Создать проект</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Статистика</h3>
+                        <p>Просмотров сегодня: 1,247</p>
+                        <button class="btn btn-secondary">Подробнее</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Настройки</h3>
+                        <p>Настройте свой профиль</p>
+                        <button class="btn btn-outline">Редактировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <h2>Вход в систему</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Войти</button>
+                </form>
+                <div class="auth-toggle">
+                    <p>Нет аккаунта? <a href="#" onclick="showAuth('register')">Зарегистрироваться</a></p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form hidden">
+                <h2>Регистрация</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="register-name">Имя</label>
+                        <input type="text" id="register-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Пароль</label>
+                        <input type="password" id="register-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Зарегистрироваться</button>
+                </form>
+                <div class="auth-toggle">
+                    <p>Уже есть аккаунт? <a href="#" onclick="showAuth('login')">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Widget Chat -->
+    <div id="chatWidget" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #e5e7eb;
+    ">
+        <!-- Chat Header -->
+        <div style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        ">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                ">🤖</div>
+                <div>
+                    <div style="font-weight: 600;">AI Помощник</div>
+                    <div style="font-size: 12px; opacity: 0.8;">Онлайн</div>
+                </div>
+            </div>
+            <button onclick="toggleChat()" style="
+                background: none;
+                border: none;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                padding: 5px;
+            ">−</button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chatMessages" style="
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        ">
+            <div style="
+                background: #f3f4f6;
+                padding: 12px;
+                border-radius: 12px;
+                max-width: 80%;
+                align-self: flex-start;
+            ">
+                Привет! Я ваш AI помощник. Могу помочь с навигацией по сайту, регистрацией и ответить на вопросы.
+                <br><br>
+                Попробуйте команды:
+                <br>• "нажми войти"
+                <br>• "зарегистрируй меня на test@example.com"
+                <br>• "перейди в pricing"
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="
+            padding: 16px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 8px;
+        ">
+            <input 
+                id="chatInput" 
+                type="text" 
+                placeholder="Напишите сообщение..."
+                style="
+                    flex: 1;
+                    padding: 10px;
+                    border: 1px solid #d1d5db;
+                    border-radius: 8px;
+                    outline: none;
+                "
+                onkeypress="if(event.key==='Enter') sendMessage()"
+            >
+            <button onclick="sendMessage()" style="
+                background: #2563eb;
+                color: white;
+                border: none;
+                padding: 10px 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 500;
+            ">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let chatMinimized = false;
+
+        // Navigation functions
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.hero, .features, .pricing, .contact').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show requested section
+            if (section === 'home') {
+                document.querySelector('.hero').style.display = 'block';
+            } else {
+                document.getElementById(section).style.display = 'block';
+            }
+        }
+
+        function showPricing() {
+            showSection('pricing');
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Auth functions
+        function showAuth(type) {
+            if (currentUser) return;
+            
+            document.getElementById('authModal').classList.add('active');
+            
+            if (type === 'login') {
+                document.getElementById('loginForm').classList.remove('hidden');
+                document.getElementById('registerForm').classList.add('hidden');
+            } else {
+                document.getElementById('registerForm').classList.remove('hidden');
+                document.getElementById('loginForm').classList.add('hidden');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Simulate login
+            currentUser = { email, name: email.split('@')[0] };
+            
+            closeModal();
+            showDashboard();
+            
+            addChatMessage('✅ Вы успешно вошли в систему!', 'bot');
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            
+            // Simulate registration
+            currentUser = { email, name };
+            
+            closeModal();
+            showDashboard();
+            
+            addChatMessage(`✅ Регистрация завершена! Добро пожаловать, ${name}!`, 'bot');
+        }
+
+        function logout() {
+            currentUser = null;
+            hideAllSections();
+            showSection('home');
+            
+            // Update nav buttons
+            document.getElementById('loginBtn').style.display = 'inline-block';
+            document.getElementById('registerBtn').style.display = 'inline-block';
+            
+            addChatMessage('👋 Вы вышли из системы. До свидания!', 'bot');
+        }
+
+        function showDashboard() {
+            hideAllSections();
+            document.getElementById('dashboard').classList.add('active');
+            
+            // Hide auth buttons
+            document.getElementById('loginBtn').style.display = 'none';
+            document.getElementById('registerBtn').style.display = 'none';
+        }
+
+        function hideAllSections() {
+            document.querySelectorAll('.hero, .features, .pricing, .contact').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Contact form
+        function submitContact(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            
+            // Show success message
+            const form = event.target;
+            form.innerHTML = '<div class="success-message">✅ Спасибо! Ваше сообщение отправлено.</div>';
+            
+            addChatMessage(`📩 Получили ваше сообщение от ${name} (${email}). Мы свяжемся с вами в ближайшее время!`, 'bot');
+        }
+
+        // Plan selection
+        function selectPlan(plan) {
+            const planNames = {
+                starter: 'Стартер',
+                pro: 'Профессиональный', 
+                enterprise: 'Корпоративный'
+            };
+            
+            addChatMessage(`📋 Вы выбрали план "${planNames[plan]}". Для оформления подписки ${currentUser ? 'перейдите в настройки аккаунта' : 'необходимо войти в систему'}.`, 'bot');
+            
+            if (!currentUser) {
+                setTimeout(() => showAuth('register'), 1000);
+            }
+        }
+
+        // Chat functions
+        function toggleChat() {
+            const widget = document.getElementById('chatWidget');
+            if (chatMinimized) {
+                widget.style.height = '500px';
+                chatMinimized = false;
+            } else {
+                widget.style.height = '60px';
+                chatMinimized = true;
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            // Process AI commands
+            setTimeout(() => {
+                processAICommand(message);
+            }, 500);
+        }
+
+        function addChatMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            
+            div.style.cssText = `
+                background: ${sender === 'user' ? '#2563eb' : '#f3f4f6'};
+                color: ${sender === 'user' ? 'white' : '#374151'};
+                padding: 12px;
+                border-radius: 12px;
+                max-width: 80%;
+                align-self: ${sender === 'user' ? 'flex-end' : 'flex-start'};
+                word-wrap: break-word;
+            `;
+            
+            div.textContent = text;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function processAICommand(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Button clicking commands
+            if (lowerMessage.includes('нажми') || lowerMessage.includes('кликни')) {
+                if (lowerMessage.includes('войти') || lowerMessage.includes('вход')) {
+                    if (!currentUser) {
+                        showAuth('login');
+                        addChatMessage('✅ Открыл форму входа! Заполните данные для входа в систему.', 'bot');
+                    } else {
+                        addChatMessage('ℹ️ Вы уже вошли в систему!', 'bot');
+                    }
+                    return;
+                }
+                
+                if (lowerMessage.includes('регистрац') || lowerMessage.includes('зарегистр')) {
+                    if (!currentUser) {
+                        showAuth('register');
+                        addChatMessage('✅ Открыл форму регистрации! Заполните данные для создания аккаунта.', 'bot');
+                    } else {
+                        addChatMessage('ℹ️ Вы уже зарегистрированы!', 'bot');
+                    }
+                    return;
+                }
+                
+                if (lowerMessage.includes('начать работу') || lowerMessage.includes('начать')) {
+                    if (!currentUser) {
+                        showAuth('register');
+                        addChatMessage('✅ Перехожу к регистрации! Создайте аккаунт чтобы начать работу.', 'bot');
+                    } else {
+                        showDashboard();
+                        addChatMessage('✅ Добро пожаловать в панель управления!', 'bot');
+                    }
+                    return;
+                }
+
+                if (lowerMessage.includes('попробовать') || lowerMessage.includes('бесплатно')) {
+                    showPricing();
+                    addChatMessage('✅ Показываю тарифные планы! Выберите подходящий вариант.', 'bot');
+                    return;
+                }
+            }
+            
+            // Registration commands
+            if (lowerMessage.includes('зарегистрир') && lowerMessage.includes('@')) {
+                const emailMatch = message.match(/[\w._%+-]+@[\w.-]+\.[A-Za-z]{2,}/);
+                if (emailMatch) {
+                    const email = emailMatch[0];
+                    const name = email.split('@')[0];
+                    
+                    // Auto-fill registration form
+                    showAuth('register');
+                    setTimeout(() => {
+                        document.getElementById('register-email').value = email;
+                        document.getElementById('register-name').value = name;
+                        document.getElementById('register-password').value = 'TechStart123!';
+                        
+                        addChatMessage(`✅ Автоматически заполнил форму регистрации для ${email}! Проверьте данные и нажмите "Зарегистрироваться".`, 'bot');
+                    }, 100);
+                    return;
+                }
+            }
+            
+            // Navigation commands
+            if (lowerMessage.includes('перейди') || lowerMessage.includes('открой') || lowerMessage.includes('покажи')) {
+                if (lowerMessage.includes('главная') || lowerMessage.includes('home')) {
+                    showSection('home');
+                    addChatMessage('✅ Перешёл на главную страницу!', 'bot');
+                    return;
+                }
+                
+                if (lowerMessage.includes('возможности') || lowerMessage.includes('features')) {
+                    showSection('features');
+                    addChatMessage('✅ Показываю наши возможности!', 'bot');
+                    return;
+                }
+                
+                if (lowerMessage.includes('цены') || lowerMessage.includes('тариф') || lowerMessage.includes('pricing')) {
+                    showSection('pricing');
+                    addChatMessage('✅ Показываю тарифные планы!', 'bot');
+                    return;
+                }
+                
+                if (lowerMessage.includes('контакт') || lowerMessage.includes('связь')) {
+                    showSection('contact');
+                    addChatMessage('✅ Открыл форму обратной связи!', 'bot');
+                    return;
+                }
+                
+                if (lowerMessage.includes('dashboard') || lowerMessage.includes('панель')) {
+                    if (currentUser) {
+                        showDashboard();
+                        addChatMessage('✅ Добро пожаловать в панель управления!', 'bot');
+                    } else {
+                        showAuth('login');
+                        addChatMessage('🔐 Для доступа к панели управления необходимо войти в систему.', 'bot');
+                    }
+                    return;
+                }
+            }
+            
+            // General responses
+            if (lowerMessage.includes('помощь') || lowerMessage.includes('команды')) {
+                addChatMessage(`🤖 Доступные команды:
+                
+🖱️ Навигация:
+• "нажми войти" - открыть форму входа
+• "кликни регистрация" - открыть регистрацию
+• "перейди в pricing" - показать тарифы
+
+📝 Автоматизация:
+• "зарегистрируй меня на email@example.com" - автозаполнение формы
+• "начать работу" - перейти к dashboard
+
+🧭 Разделы сайта:
+• "покажи возможности"
+• "открой контакты"
+• "перейди на главную"`, 'bot');
+                return;
+            }
+            
+            if (lowerMessage.includes('привет') || lowerMessage.includes('hello')) {
+                addChatMessage(`Привет! 👋 Я AI помощник TechStart. 
+                
+Могу помочь с:
+• Навигацией по сайту
+• Регистрацией и входом  
+• Ответами на вопросы
+• Выбором тарифного плана
+
+Напишите "помощь" для списка команд!`, 'bot');
+                return;
+            }
+            
+            // Default response
+            addChatMessage('🤔 Не совсем понял ваш запрос. Попробуйте команды типа "нажми войти", "покажи цены" или "зарегистрируй меня на test@example.com". Напишите "помощь" для полного списка команд.', 'bot');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home section by default
+            showSection('home');
+            
+            // Close modal when clicking outside
+            document.getElementById('authModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
