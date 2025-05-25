@@ -55,11 +55,16 @@ app.use(cors({
       process.env.FRONTEND_URL || 'http://localhost:3000',
       'http://localhost:3000',
       'http://localhost:3001',
+      // ngrok domains
+      /^https:\/\/[a-z0-9\-]+\.ngrok-free\.app$/,
+      /^https:\/\/[a-z0-9\-]+\.ngrok\.io$/,
       // Добавьте здесь домены Render после деплоймента
       // 'https://your-app-name.onrender.com'
     ];
     
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.some(allowed => 
+      typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+    )) {
       callback(null, true);
     } else {
       console.warn(`CORS blocked origin: ${origin}`);
