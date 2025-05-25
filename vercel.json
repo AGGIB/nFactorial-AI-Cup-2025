@@ -1,19 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/dist/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "backend/dist/index.js"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "installCommand": "cd backend && npm ci && npx prisma generate"
+  "buildCommand": "npm ci && npm run build && npx prisma generate",
+  "outputDirectory": "dist"
 } 
